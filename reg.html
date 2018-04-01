@@ -61,7 +61,7 @@
 				<div id= "blank"></div>
 				<div class="mui-input-row">
 					<label>用户名</label>
-					<input id='username' type="text" maxlength="12" class="mui-input-clear mui-input validate" placeholder="4-10位,可包含中英文,数字,下划线"/>
+					<input id='username' type="text" maxlength="12" class="mui-input-clear mui-input validate" placeholder="4-10位,可包含英文,数字,下划线"/>
 					<div id='checkuser'></div>	
 				</div>
 				<div class="mui-input-row">
@@ -76,7 +76,7 @@
 				</div>
 				<div class="mui-input-row">
 					<label>手机号</label>
-					<input id='mobile' type="text" maxlength="11" class="mui-input-clear mui-input" placeholder="请输入手机号">
+					<input id='mobile' type="text" maxlength="11" class="mui-input" placeholder="请输入手机号">
 					<button id='send' class="mui-btn mui-btn-primary">获取验证码</button>
 				</div>
 				
@@ -95,10 +95,10 @@
 		<script>
 			(function($, doc) {
 				$.init();
-				var baseUrl = "http://192.168.0.101:8080/campus/";
+				var baseUrl = "http://192.168.0.100:8080/campus/";
 				var usernameBox = doc.getElementById('username');
 				var passwordBox = doc.getElementById('password');
-				var passwordConfirmBox = doc.getElementById('password_confirm');
+				var passwordConfirmBox = doc.getElementById('password_confirm');044025
 				var mobileBox = doc.getElementById("mobile");
 				var captchaCodeBox = doc.getElementById("captchaCode");
 				var sendBtn = doc.getElementById("send");
@@ -132,7 +132,7 @@
 				
 				//验证用户名格式，是否被注册
 				var ajaxCheckUserName = function(){
-					var reg = /^[\u4e00-\u9fa5_a-zA-Z0-9]{4,10}$/;
+					var reg = /^[_a-zA-Z0-9]{4,10}$/;
 					if (!reg.test(usernameBox.value)) {
 						mui.toast("用户名格式错误");
 						doc.getElementById("checkuser").innerHTML = "<span class='mui-icon mui-icon-closeempty' style='color:red'></span>";
@@ -178,6 +178,9 @@
 				
 				//确认密码
 				var confimPassword = function(){
+					if (passwordBox.value == "" || passwordConfirmBox.value == "") {
+						return;
+					}
 					if (passwordBox.value == passwordConfirmBox.value) {
 						doc.getElementById("recheckpass").innerHTML = "<span class='mui-icon mui-icon-checkmarkempty' style='color:green'></span>";
 					} else {
@@ -210,7 +213,7 @@
 					//验证手机号
 					var reg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/;
 					if (!mobileBox.value.match(reg)) {
-						mui.toast("手机号格式错误");
+						mui.toast("请输入正确的手机号");
 						return;
 					}
 					var url = baseUrl + "user/sendCaptchaCode";
@@ -235,15 +238,36 @@
 					});
 				}
 				
+				var checkParam = function() {
+					if (usernameBox.value == "") {
+						mui.toast("请输入用户名");
+						return false;
+					}
+					if (passwordBox.value == "") {
+						mui.toast("请输入密码");
+						return false;
+					}
+					if (passwordConfirmBox.value == "") {
+						mui.toast("请确认密码");
+						return false;
+					}
+					if (mobileBox.value== "") {
+						mui.toast("请输入手机号");
+						return false;
+					}
+					if (captchaCodeBox.value == "") {
+						mui.toast("请输入验证码");
+						return false;
+					}
+					return true;
+				}
+				
 				//注册
 				var ajaxRegister = function() {
+					if (!checkParam()){
+						return;
+					}
 					var url = baseUrl + "user/register";
-					var data = {
-						'username' : usernameBox.value,
-						'password' : passwordBox.value,
-						'mobile' : mobileBox.value,
-						'captchaCode' : captchaCodeBox.value
-					};
 					$.ajax(url, {
 						data : {
 							'username' : usernameBox.value,
@@ -254,6 +278,9 @@
 						type : 'POST',
 						dataType : 'json',
 						success : function(data) {
+							if(data.code == 301) {
+								mui.toast("用户名已被使用");
+							}
 							if (data.code == 303) {
 								mui.toast("验证码错误");
 							}

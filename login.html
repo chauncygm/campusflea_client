@@ -137,7 +137,32 @@
 		<script>
 			(function($, doc) {
 				
-				var baseUrl = "http://192.168.0.101:8080/campus/";
+				var baseUrl = "http://192.168.0.100:8080/campus/";
+				
+				//使用token自动登录
+				var ajaxTokenLogin = function() {
+					var url = baseUrl + "user/tokenLogin"
+					mui.ajax(url, {
+						data : {
+							"id" : id
+						},
+						headers : {
+							"authorization" : token
+						},
+						dataType : 'json',
+						type : 'POST',
+						success : jumpHome(),
+					});
+				}
+				
+				//跳转主页
+				var jumpHome = function() {
+					mui.openWindow({
+						url : 'index.html',
+						id : 'index'
+					});
+				}
+				
 				
 				//自动登录检查
 				if (localStorage.getItem("autoLogin") == "true") {
@@ -147,7 +172,7 @@
 					document.getElementById("autoLogin").classList['add']('mui-active');
 					
 					if (id != null && token != null) {
-						ajaxTokenLogin(id, token);
+						ajaxTokenLogin(); 
 					}
 				}
 
@@ -179,6 +204,11 @@
 					var username = document.getElementById("account").value;
 					var password = document.getElementById("password").value;
 					
+					if (username.trim() == "" || password.trim() == "") {
+						mui.toast("请输入用户名和密码");
+						return;
+					}
+					
 					mui.ajax(url,{
 						data : {
 							"username" : username,
@@ -188,7 +218,7 @@
 						dataType : 'json',
 						timeout : 10000,
 						success : function(data){
-							console.log(data.code);
+							console.log(data);
 							if (data.code == 400) {
 								mui.toast("请输入正确的用户名");
 							}
@@ -209,33 +239,10 @@
 								jumpHome();
 							}
 						},
-						error : function() {
+						error : function(xhr, type, errorThrown) {
+							console.log(type);
 							mui.toast("未知错误")
 						}
-					});
-				}
-				
-				//使用token自动登录
-				var ajaxTokenLogin = function(id, token) {
-					var url = baseUrl + "user/tokenLogin"
-					mui.ajax(url, {
-						data : {
-							"id" : id
-						},
-						headers : {
-							"authorization" : token
-						},
-						dataType : 'json',
-						type : 'POST',
-						success : jumpHome()
-					});
-				}
-				
-				//跳转主页
-				var jumpHome = function() {
-					mui.openWindow({
-						url : 'home.html',
-						id : 'home'
 					});
 				}
 				
