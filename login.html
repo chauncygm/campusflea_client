@@ -94,6 +94,11 @@
 			.small-text {
 				font-size: small;
 			}
+			#info {
+				margin-top: 280px;
+				text-align: center;
+				font-size: 13px;
+			}
 		</style>
 
 	</head>
@@ -128,7 +133,7 @@
 				<div class="link-area"><a id='reg'>注册账号</a> <span class="spliter">|</span> <a id='forgetPassword'>忘记密码</a>
 				</div>
 			</div>
-			<div class="mui-content-padded oauth-area small-text">
+			<div id="info">
 				@校园跳蚤 | 版权所有
 			</div>
 		</div>
@@ -137,7 +142,7 @@
 		<script>
 			(function($, doc) {
 				
-				var baseUrl = "http://192.168.0.100:8080/campus/";
+				var baseUrl = "http://192.168.0.104:8080/campus/";
 				
 				//使用token自动登录
 				var ajaxTokenLogin = function() {
@@ -158,23 +163,23 @@
 				//跳转主页
 				var jumpHome = function() {
 					mui.openWindow({
-						url : 'index.html',
-						id : 'index'
+						url : 'index-menu.html',
+						id : 'index-menu'
 					});
 				}
 				
 				
 				//自动登录检查
-				if (localStorage.getItem("autoLogin") == "true") {
-					var id = localStorage.getItem("id");
-					var token = localStorage.getItem("token");
-
-					document.getElementById("autoLogin").classList['add']('mui-active');
-					
-					if (id != null && token != null) {
-						ajaxTokenLogin(); 
-					}
-				}
+//				if (localStorage.getItem("autoLogin") == "true") {
+//					var id = localStorage.getItem("id");
+//					var token = localStorage.getItem("token");
+//
+//					document.getElementById("autoLogin").classList['add']('mui-active');
+//					
+//					if (id != null && token != null) {
+//						ajaxTokenLogin(); 
+//					}
+//				}
 
 				
 				//检查网络
@@ -216,7 +221,7 @@
 						},
 						type : 'POST',
 						dataType : 'json',
-						timeout : 10000,
+						timeout : 100000,
 						success : function(data){
 							console.log(data);
 							if (data.code == 400) {
@@ -252,8 +257,8 @@
 				//跳转注册页
 				regButton.addEventListener('tap', function(event) {
 					$.openWindow({
-						url: 'reg.html',
-						id: 'reg',
+						url: 'regist.html',
+						id: 'regist',
 						preload: true,
 						show: {
 							aniShow: 'pop-in'
@@ -270,8 +275,8 @@
 				//跳转找回密码页
 				forgetButton.addEventListener('tap', function(event) {
 					$.openWindow({
-						url: 'forget_password.html',
-						id: 'forget_password',
+						url: 'repswd.html',
+						id: 'repswd',
 						preload: true,
 						show: {
 							aniShow: 'pop-in'

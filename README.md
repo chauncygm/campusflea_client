@@ -8,4 +8,4 @@
 
 ### note
 1. 用户名：chauncy
-2. 密码:Chauncy
+2. 密码:chauncy

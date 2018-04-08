@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<style>
+			li {
+				list-style: none;
+			}
+			p {
+				color: #111111;
+			}
+			hr {
+				margin-top: 0px;
+				margin-bottom: 0px;
+			}
+			#hr {
+				height: 4px;
+				border: 10px;
+			}
+			.msg {
+				height: 60px;
+				width: 100%;
+			}
+			.headbox {
+				height: 60px;
+				width: 17%;
+				float: left;
+			}
+			.headbox img {
+				margin-top: 5px;
+				margin-left: 10px;
+				border-radius: 50%;
+				height: 50px;
+				width: 50px;
+			}
+			.detailbox {
+				height: 60px;
+				width: 100%;
+			}
+			.name {
+				margin-top: 6px;
+				margin-left: 10px;
+				width: 60%;
+				font-size: 20px;
+				float: left;
+			}
+			.num {
+				margin-top: 9px;
+				margin-left: 12%;
+				width: 21px;
+				height: 20px;
+				font-size: 15px;
+				background: #CC3333;
+				color: #FFFFFF;
+			}
+			.content {
+				margin-top: 6px;
+				margin-left: 10px;
+				width: 50%;
+				font-size: 14px;
+				float: left;
+			}
+			.time {
+				margin-top: 5px;
+				margin-left: 11%;
+				width: 18%;
+				color: #333333;
+				font-size: 14px;
+				float: left;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">消息</h1>
+		</header>
+		<hr id="hr"/>
+		<div class="mui-content">
+			<hr />
+			<li class="msg">
+				<div class="headbox">
+					<img src="images/logo.png">
+				</div>
+				<div class="detailbox">
+					<div class="name">your name</div>
+					<span class="mui-badge num">5</span>
+					<div class="content">THIS IS A MESSAGE!!</div>
+					<span class="time">3/4 14:35</span>
+				</div>
+			</li>
+			<hr />
+			<li class="msg">
+				<div class="headbox">
+					<img src="images/logo.png">
+				</div>
+				<div class="detailbox">
+					<div class="name">your name</div>
+					<span class="mui-badge num">4</span>
+					<div class="content">THIS IS A MESSAGE!!</div>
+					<span class="time">3/4 14:35</span>
+				</div>
+			</li>
+			<hr />
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script>
+			mui.init({
+				
+			});
+			(function($, doc) {
+				
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

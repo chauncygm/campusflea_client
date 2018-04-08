@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+		<style type="text/css">
+			* {
+				font-family: "微软雅黑";
+				margin: 0;
+				padding: 0;
+			}
+			li,ul {
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+			}
+			a {
+				text-decoration:none; 
+				color:#000000;
+			}
+			p {
+				color: #222222;
+			}
+			img {
+				width: 100%;
+				height: auto;
+			}
+			hr {
+				margin-bottom: 5px;
+			}
+			#slider {
+				width: 100%;
+				height: 150px;
+			}
+			#option {
+				width: 100%;
+				height: 60px;
+				background: #88CCFF;
+			}
+			#option li {
+				float: left;
+				width: 30%;
+				height: 45px;
+				line-height: 45px;
+				margin-top:8px;
+				margin-left: 2.5%;
+				font-size: 16px;
+				border:0px solid;
+				border-radius:10px;
+				background: #E0E0E0;
+				text-align: center;
+			}
+			.mui-content {
+				background: #CCFFCC;
+			}
+			#type {
+				height: 46px;
+			}
+			.type {
+				text-align: center;
+				margin-top: 4px;
+				margin-left: 4px;
+				width: 48%;
+				height: 42px;
+				line-height: 42px;
+				font-size: 16px;
+				background: #FFFF99;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				float: left;
+				border:0px solid;
+			}
+			.choose {
+				height: 4px;
+				background: #EE2C2C;
+			}
+			.goods-list {
+				margin-top: 5px;
+				margin-left: 1.2%;
+				width: 97.6%;
+				height: 260px;
+				border: 0px solid;
+				border-radius: 7px;
+				background: #F0F8FF;
+			}
+			.user-info-container {
+				width: 100%;
+				height: 20%;
+				border-top-left-radius: 7px;
+				border-top-right-radius: 7px;
+				background: #FFFACD;
+			}
+			.goods-pic-container {
+				width: 100%;
+				height: 44%;
+			}
+			.good-desc-container {
+				height: 21%;
+			}
+			.goods-comment-container {
+				width: 100%;
+				height: 10%;
+			}
+			.avatar {
+				width: 20%;
+			}
+			.avatar img{
+				margin: 6px 0px 0px 10px;
+				width: 40px;
+				height: 40px;
+				border-radius: 25%;
+			}
+			.user-info {
+				width: 60% ;
+			}
+			.user-name {
+				margin-top: 6px;
+				margin-bottom: 1px;
+				font-size: 16px;
+				color:#000000
+			}
+			.send-time {
+				margin-bottom: 4px;
+				color: #444444;
+			}
+			.price {
+				width: 20%;
+				height: 100%;
+			    display: flex;
+			    align-items: center;
+			    font-size: 18px;
+			    color: #E00000;
+			}
+			.float {
+				float: left;
+			}
+			.picture {
+				margin-top: 5px;
+				margin-left: 1%;
+				width: 32%;
+				height: 100%;
+				float: left;
+			}
+			.content {
+				margin-left: 3px;
+				color: #111111;
+				font-size: 15px;
+				margin-top: 5px;
+				height: 50px;
+				line-height: 27px;
+			}
+			.from {
+				margin-left: 3px;
+				width: 70%;
+				color: #4876FF;
+			}
+			.like {
+				width: 17%;
+				font-size: 18px;
+				color: #8B636C;
+			}
+			.comment {
+				margin-top: 2px;
+				font-size: 18px;
+				color: #8B636C;
+			}
+			.mui-icon-extra {
+				margin-top: 2px;
+				font-size: 18px;
+				color: #B8860B;
+			}
+			.comment .mui-icon-extra {
+				font-size: 17px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/yuantiao.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/shuijiao.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/muwu.jpg">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/cbd.jpg">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/yuantiao.jpg">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/shuijiao.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		
+		<div id="option">
+			<li>分类</li>
+			<li>淘校园</li>
+			<li>逛同城</li>
+		</div>
+		
+		<div id="type">
+			<div id="callerbox" class="type">
+				<li>新鲜的</li>
+				<div id="caller-trigger" class="choose"></div>
+			</div>
+			<div id="nearbybox" class="type">
+				<li>附近的</li>
+				<div id="nearby-trigger"></div>
+			</div>
+		</div>
+
+		<div id="content">
+			<div id="caller" class="mui-control-content mui-active">
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥9980</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,这夜晚凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+				
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥998</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+				
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥998</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+			</div>
+			
+			<div id="nearby" class="mui-control-content">
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥100</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+				
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥998</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+				
+				<ul class="goods-list">
+					<div class="user-info-container">
+						<div class="avatar float">
+							<img src="images/logo.png"/>
+						</div>
+						<div class="user-info float">
+							<p class="user-name">匿名用户</p>
+							<p class="send-time">2018-01-03 16:00</p>
+						</div>
+						<div class="price float">￥998</div>
+					</div>
+					<div class="goods-pic-container">
+						<li class="picture"><img src="images/muwu_1.jpg"/></li>
+						<li class="picture"><img src="images/yuantiao_1.jpg"/></li>
+						<li class="picture"><img src="images/shuijiao_1.jpg"/></li>
+					</div>
+					<div class="good-desc-container">
+						<p class="content">行驶在昏黑寂寥的荒漠公路上,凉风吹过我的头发，我看到微弱的灯光,远处教堂的钟声...</p>
+					</div>
+					<hr />
+					<div class="goods-comment-container">
+						<p class="from float"><b>来自</b> 四川师范大学成龙校区</p>
+						<p class="like float"><span class="mui-icon-extra mui-icon-extra-like"></span> 11</p>
+						<p class="comment float"><span class="mui-icon-extra mui-icon-extra-comment"></span>  8</p>
+					</div>
+				</ul>
+			</div>	
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			(function($, doc) {
+				$.init();
+				var callerbox = doc.getElementById("callerbox");
+				var nearbybox = doc.getElementById("nearbybox");
+				var callertrigger = doc.getElementById("caller-trigger");
+				var nearbytrigger = doc.getElementById("nearby-trigger");
+				var caller = doc.getElementById("caller");
+				var nearby = doc.getElementById("nearby");
+				callerbox.addEventListener("tap", function(){
+					if (!callertrigger.classList.contains("choose")){
+						callertrigger.classList.add("choose");
+						nearbytrigger.classList.remove("choose");
+					}
+					if (!caller.classList.contains("mui-active")){
+						caller.classList.add("mui-active");
+						nearby.classList.remove("mui-active")
+					}
+				});
+				nearbybox.addEventListener("tap", function(){
+					if (!nearbytrigger.classList.contains("choose")){
+						nearbytrigger.classList.add("choose");
+						callertrigger.classList.remove("choose");
+					}
+					if (!nearby.classList.contains("mui-active")) {
+						nearby.classList.add("mui-active");
+						caller.classList.remove("mui-active");
+					}
+				});
+				var slider = mui("#slider");
+				slider.slider({
+					interval: 3000
+				});
+			}(mui, document));
+		</script>
+	</body>
+
+</html>

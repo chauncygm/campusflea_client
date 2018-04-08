@@ -55,7 +55,8 @@
   "examples/offcanvas-drag-right-plus-main.html": {
     "refer": [
       "examples/offcanvas-drag-right-plus-menu.html"
-    ]
+    ],
+    "resources": []
   },
   "examples/pullrefresh_main.html": {
     "resources": [
@@ -68,21 +69,54 @@
   "examples/best-practices/list-to-detail/listview.html": {
     "refer": [
       "examples/best-practices/list-to-detail/detail.html"
-    ]
+    ],
+    "resources": []
   },
   "index-menu.html": {
     "refer": [
-      "examples/offcanvas-drag-left.html"
+      "examples/offcanvas-drag-left.html",
+      "content.html",
+      "home.html",
+      "mine.html",
+      "chat.html",
+      "msg-list.html"
+    ],
+    "resources": [
+      "home.html"
     ]
   },
   "login.html": {
     "refer": [
-      "reg.html"
-    ]
+      "reg.html",
+      "forget_password.html",
+      "index.html",
+      "index-menu.html"
+    ],
+    "resources": []
   },
   "reg.html": {
     "refer": [
       "reg.html"
+    ],
+    "resources": []
+  },
+  "home.html": {
+    "resources": [
+      "content.html"
+    ],
+    "refer": [
+      "content.html"
+    ]
+  },
+  "examples/tab-webview-main.html": {
+    "resources": [
+      "examples/tab-webview-subpage-about.html"
+    ],
+    "refer": [
+      "examples/tab-webview-subpage-setting.html",
+      "examples/tab-webview-subpage-chat.html",
+      "examples/tab-webview-subpage-contact.html",
+      "examples/tab-webview-subpage-about.html"
     ]
   }
 }
