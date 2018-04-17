@@ -21,7 +21,7 @@
 				height: 10px;
 			}
 			.mui-input-group label {
-				width: 22%;
+				width: 23%;
 			}
 			.mui-input-right {
 				width: 10%;
@@ -92,10 +92,10 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script src="jquery/jquery-3.3.1.min.js"></script>
+		<script src='js/common.js'></script>
 		<script>
 			(function($, doc) {
 				$.init();
-				var baseUrl = "http://192.168.0.104:8080/campus/";
 				var usernameBox = doc.getElementById('username');
 				var passwordBox = doc.getElementById('password');
 				var passwordConfirmBox = doc.getElementById('password_confirm');
@@ -138,7 +138,7 @@
 						doc.getElementById("checkuser").innerHTML = "<span class='mui-icon mui-icon-closeempty' style='color:red'></span>";
 						return;
 					}
-					var url = baseUrl + "user/checkUserName"
+					var url = baseUrl + "/user/checkUserName"
 					mui.ajax(url, {
 						data : {
 							'username' : usernameBox.value,
@@ -216,7 +216,8 @@
 						mui.toast("请输入正确的手机号");
 						return;
 					}
-					var url = baseUrl + "user/sendCaptchaCode";
+					console.log('111');
+					var url = baseUrl + "/user/sendCaptchaCode";
 					$.ajax(url, {
 						data : {
 							'mobile' : mobileBox.value,
@@ -225,6 +226,7 @@
 						dataType : 'json',
 						type : 'POST',
 						success : function(data) {
+							console.log("success");
 							sendBtnCD();
 							if (data.code == 200) {
 								mui.toast("已发送");
@@ -267,7 +269,7 @@
 					if (!checkParam()){
 						return;
 					}
-					var url = baseUrl + "user/register";
+					var url = baseUrl + "/user/register";
 					$.ajax(url, {
 						data : {
 							'username' : usernameBox.value,

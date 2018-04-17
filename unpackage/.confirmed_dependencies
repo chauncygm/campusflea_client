@@ -90,7 +90,9 @@
       "reg.html",
       "forget_password.html",
       "index.html",
-      "index-menu.html"
+      "index-menu.html",
+      "regist.html",
+      "repswd.html"
     ],
     "resources": []
   },
@@ -118,5 +120,23 @@
       "examples/tab-webview-subpage-contact.html",
       "examples/tab-webview-subpage-about.html"
     ]
+  },
+  "msg-list.html": {
+    "refer": [
+      "im-chat.html"
+    ],
+    "resources": []
+  },
+  "im-chat.html": {
+    "resources": [
+      "/storage/emulated/0/Tencent/QQfile_recv/Z[%E@MR2I682Q56HN2L5GV6.jpg"
+    ],
+    "refer": []
+  },
+  "regist.html": {
+    "refer": [
+      "regist.html"
+    ],
+    "resources": []
   }
 }

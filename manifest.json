@@ -1108,7 +1108,9 @@
 					"reg.html",
 					"forget_password.html",
 					"index.html",
-					"index-menu.html"
+					"index-menu.html",
+					"regist.html",
+					"repswd.html"
 				],
 				"priority": 0
 			},
@@ -1124,6 +1126,27 @@
 					"content.html"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"msg-list.html": {
+				"resources": [],
+				"refer": [
+					"im-chat.html"
+				],
+				"priority": 0
+			},
+			"im-chat.html": {
+				"resources": [
+					"/storage/emulated/0/Tencent/QQfile_recv/Z[%E@MR2I682Q56HN2L5GV6.jpg"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"regist.html": {
+				"resources": [],
+				"refer": [
+					"regist.html"
+				],
 				"priority": 0
 			}
 		},

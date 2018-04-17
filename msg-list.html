@@ -83,39 +83,85 @@
 		<hr id="hr"/>
 		<div class="mui-content">
 			<hr />
-			<li class="msg">
+			<li id="1" class="msg">
 				<div class="headbox">
-					<img src="images/logo.png">
+					<img id="1" src="images/logo.png">
 				</div>
 				<div class="detailbox">
-					<div class="name">your name</div>
+					<div class="name">张三</div>
 					<span class="mui-badge num">5</span>
 					<div class="content">THIS IS A MESSAGE!!</div>
 					<span class="time">3/4 14:35</span>
 				</div>
 			</li>
 			<hr />
-			<li class="msg">
+			<li id="2" class="msg">
 				<div class="headbox">
 					<img src="images/logo.png">
 				</div>
 				<div class="detailbox">
-					<div class="name">your name</div>
+					<div class="name">李四</div>
 					<span class="mui-badge num">4</span>
 					<div class="content">THIS IS A MESSAGE!!</div>
 					<span class="time">3/4 14:35</span>
 				</div>
 			</li>
 			<hr />
+			<select>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+				<option>dfasf</option>
+				<option>dfasdf</option>
+			</select>
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/app.js"></script>
 		<script>
-			mui.init({
-				
-			});
 			(function($, doc) {
-				
+				mui(".mui-content").on('tap', '.msg', function() {
+					var oid = this.getAttribute("id");
+					var mid = localStorage.getItem('id');
+					var oname = this.getElementsByClassName("name")[0].innerHTML;
+					this.getElementsByClassName("num")[0].style.visibility='hidden';
+					this.getElementsByClassName("num")[0].innerHTML = 0;
+					mui.openWindowWithTitle({
+						id: 'im-chat',
+						url: 'im-chat.html',
+						styles: {
+							titleNView: {                       // 窗口的标题栏控件
+						    	titleText:oname,                // 标题栏文字,当不设置此属性时，默认加载当前页面的标题，并自动更新页面的标题
+							    titleColor:"#000000",             // 字体颜色,颜色值格式为"#RRGGBB",默认值为"#000000"
+							    titleSize:"17px",                 // 字体大小,默认17px
+							    backgroundColor:"#F7F7F7",        // 控件背景颜色,颜色值格式为"#RRGGBB",默认值为"#F7F7F7"
+//							    progress:{                        // 标题栏控件的进度条样式
+//							    	color:"#00DD00",                // 进度条颜色,默认值为"#00FF00"  
+//							    	height:"1px"                    // 进度条高度,默认值为"2px"         
+//							    },
+							    splitLine:{                       // 标题栏控件的底部分割线，类似borderBottom
+								    color:"#CCCCCC",                // 分割线颜色,默认值为"#CCCCCC"  
+								    height:"1px"                    // 分割线高度,默认值为"2px"
+							    }
+						    }
+						},
+						extras: {
+							'oid': oid,
+							'mid': '1'
+						},
+						createNew:true
+					});
+				});
 			}(mui, document));
 		</script>
 	</body>

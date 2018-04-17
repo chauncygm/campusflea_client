@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 		<link href="css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link href="css/app.css" rel="stylesheet" />
 		<link href="css/mui.imageviewer.css" rel="stylesheet" />
 		<style>
 			html,
@@ -195,7 +195,7 @@
 				height: 140px;
 				margin-left: -70px;
 				margin-top: -70px;
-				background-image: url(../images/arecord.png);
+				background-image: url(images/qq.png);
 				background-repeat: no-repeat;
 				background-position: center center;
 				background-size: 30px 30px;
@@ -296,10 +296,9 @@
 		</style>
 	</head>
 
-	<body contextmenu="return false;">
+	<body>
 		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">chat (聊天窗口)</h1>
+			<h1 class="mui-title">消息</h1>
 		</header>
 		<pre id='h'></pre>
 		<script id='msg-template' type="text/template">
@@ -308,13 +307,13 @@
 					<% if(item.sender=='self' ) { %>
 						<i class="msg-user mui-icon mui-icon-person"></i>
 					<% } else { %>
-						<img class="msg-user-img" src="../images/logo.png" alt="" />
+						<img class="msg-user-img" src="images/logo.png" alt="" />
 					<% } %>
 					<div class="msg-content">
 						<div class="msg-content-inner">
-							<% if(item.type=='text' ) { %>
+							<% if(item.type=='txt' ) { %>
 								<%=( item.content|| '&nbsp;&nbsp;') %>
-							<% } else if(item.type=='image' ) { %>
+							<% } else if(item.type=='img' ) { %>
 								<img class="msg-content-image" src="<%=(item.content)%>" style="max-width: 100px;" />
 							<% } else if(item.type=='sound' ) { %>
 								<span class="mui-icon mui-icon-mic" style="font-size: 18px;font-weight: bold;"></span>
@@ -348,10 +347,10 @@
 			<div class="r-sigh">!</div>
 			<div id="audio_tips" class="rsalert">手指上滑，取消发送</div>
 		</div>
-		<script src=".js/mui.min.js"></script>
+		<script src="js/mui.min.js"></script>
 		<script src="js/mui.imageViewer.js"></script>
 		<script src="js/arttmpl.js"></script>
-		<script type="text/javascript" charset="utf-8">
+		<script>
 			(function($, doc) {
 				var MIN_SOUND_TIME = 800;
 				$.init({
@@ -382,6 +381,85 @@
 				}
 
 				$.plusReady(function() {
+					var baseurl = "http://192.168.0.101:8080/campus";
+					var self = plus.webview.currentWebview();
+					var mid = self.mid;
+					var oid = self.oid;
+					var wsurl = "ws://192.168.0.101:8080/campus/chat/" + mid + "/" + oid;
+					console.log(wsurl);
+					var ws = new WebSocket(wsurl);
+			
+					ws.onopen = function(evt) {
+						console.log("Connection open ...");
+					}
+					
+					ws.onmessage = function(evt) {
+						console.log("received message: " + evt.data);
+						var type = evt.data.split(":")[0];
+						var content = evt.data.substring(4);
+						if (type == 'img') {
+							record.push({
+								'sender':'other',
+								'type':'img',
+								'content':baseurl + content
+							});
+						} else {
+							record.push({
+								'sender':'other',
+								'type':'txt',
+								'content':content
+							});
+						}
+						bindMsgList();
+					}
+					
+					ws.onclose = function(evt) {
+						console.log("Connection closed");
+						ws.close();
+					}
+					function createUpload(path) {
+						var task = plus.uploader.createUpload( "http://192.168.0.101:8080/campus/chat/uploadImg", 
+							{ method:"POST",blocksize:204800,priority:100 },
+							function ( t, status ) {
+								// 上传完成
+								if ( status == 200 ) {
+									console.log(t.responseText);
+									var response = JSON.parse(t.responseText);
+									if (response.code == 200) {
+										ws.send('img:' + response.data);
+									} else {
+										mui.toast("网络异常");
+									}
+								} else {
+									mui.toast("网络异常");
+									return null;
+								}
+							}
+						);
+						task.addFile(path, {key:'picture'} );
+						task.addData( "string_key", "string_value" );
+						//task.addEventListener( "statechanged", onStateChanged, false );
+						task.start();
+					}
+					var history = function() {
+						var url = baseurl + '/chat/history';
+						console.log(url);
+						mui.ajax(url,{
+							data:{
+								'mid':mid,
+								'oid':oid
+							},
+							datatype:'json',
+							type:'post',
+							success: function(data){
+								console.log(data.code);
+							},
+							error: function(){
+								mui.toast("网络异常");
+							}
+						})
+					};
+					history();
 					plus.webview.currentWebview().setStyle({
 						softinputMode: "adjustResize"
 					});
@@ -399,14 +477,9 @@
 							imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
 							//var view = ((ViewGroup)main.findViewById(android.R.id.content)).getChildAt(0);
 							imm.showSoftInput(main.getWindow().getDecorView(), InputMethodManager.SHOW_IMPLICIT);
-							//alert("ll");
 						}
 					};
-					var record = [{
-						sender: 'zs',
-						type: 'text',
-						content: 'Hi，我是 MUI 小管家！'
-					}];
+					var record = [];
 					var ui = {
 						body: doc.querySelector('body'),
 						footer: doc.querySelector('footer'),
@@ -442,12 +515,6 @@
 						dbl: false
 					});
 					var bindMsgList = function() {
-						//绑定数据:
-						/*tp.bind({
-							template: 'msg-template',
-							element: 'msg-list',
-							model: record
-						});*/
 						ui.areaMsgList.innerHTML = template('msg-template', {
 							"record": record
 						});
@@ -465,9 +532,15 @@
 						ui.areaMsgList.scrollTop = ui.areaMsgList.scrollHeight + ui.areaMsgList.offsetHeight;
 					}, false);
 					var send = function(msg) {
+						console.log('send:' + msg.content);
+						if (msg.type == 'img') {
+							createUpload(msg.content);
+						} else {
+							ws.send('txt:' + msg.content);
+						}
 						record.push(msg);
 						bindMsgList();
-						toRobot(msg.content);
+//						toRobot(msg.content);
 					};
 					var toRobot = function(info) {
 						var apiUrl = 'http://www.tuling123.com/openapi/api';
@@ -479,7 +552,7 @@
 							//alert(JSON.stringify(data));
 							record.push({
 								sender: 'zs',
-								type: 'text',
+								type: 'txt',
 								content: data.text
 							});
 							bindMsgList();
@@ -528,7 +601,7 @@
 							//							event.detail.gesture.preventDefault();
 							send({
 								sender: 'self',
-								type: 'text',
+								type: 'txt',
 								content: ui.boxMsgText.value.replace(new RegExp('\n', 'gm'), '<br/>')
 							});
 							ui.boxMsgText.value = '';
@@ -573,7 +646,7 @@
 									cmr.captureImage(function(path) {
 										send({
 											sender: 'self',
-											type: 'image',
+											type: 'img',
 											content: "file://" + plus.io.convertLocalFileSystemURL(path)
 										});
 									}, function(err) {});
@@ -582,7 +655,7 @@
 									plus.gallery.pick(function(path) {
 										send({
 											sender: 'self',
-											type: 'image',
+											type: 'img',
 											content: path
 										});
 									}, function(err) {}, null);
@@ -634,7 +707,6 @@
 						});
 					}, false);
 					ui.body.addEventListener('drag', function(event) {
-						//console.log('drag');
 						if (Math.abs(event.detail.deltaY) > 50) {
 							if (!recordCancel) {
 								recordCancel = true;
@@ -654,7 +726,6 @@
 						}
 					}, false);
 					ui.boxMsgSound.addEventListener('release', function(event) {
-						//console.log('release');
 						if (audio_tips.classList.contains("cancel")) {
 							audio_tips.classList.remove("cancel");
 							audio_tips.innerHTML = "手指上划，取消发送";
@@ -674,7 +745,6 @@
 						recorder.stop();
 					}, false);
 					ui.boxMsgSound.addEventListener("touchstart", function(e) {
-						//console.log("start....");
 						e.preventDefault();
 					});
 					ui.boxMsgText.addEventListener('input', function(event) {
@@ -702,6 +772,13 @@
 							ui.boxMsgText.blur();
 						}
 					})
+					
+					old_back = mui.back;  
+					mui.back = function(){
+						ws.close()
+					    mui.currentWebview.close(); //关闭当前页面  
+					    old_back;  
+					}
 				});
 			}(mui, document));
 		</script>
