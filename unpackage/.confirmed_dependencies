@@ -79,7 +79,8 @@
       "home.html",
       "mine.html",
       "chat.html",
-      "msg-list.html"
+      "msg-list.html",
+      "personalCenter.html"
     ],
     "resources": [
       "home.html"
@@ -107,7 +108,9 @@
       "content.html"
     ],
     "refer": [
-      "content.html"
+      "content.html",
+      "category.html",
+      "search.html"
     ]
   },
   "examples/tab-webview-main.html": {
@@ -136,6 +139,27 @@
   "regist.html": {
     "refer": [
       "regist.html"
+    ],
+    "resources": []
+  },
+  "personalCenter.html": {
+    "resources": [
+      "images/icon/6Ï.png",
+      "images/icon/^.png",
+      "images/icon/7.png",
+      "images/icon/Ñ.png",
+      "images/icon/‘.png",
+      "images/icon/6ý.png",
+      "images/icon/^.png",
+      "images/icon/7.png",
+      "images/icon/ý\u0003.png",
+      "images/icon/\u0016ý.png"
+    ],
+    "refer": []
+  },
+  "content.html": {
+    "refer": [
+      "goodsDetails.html"
     ],
     "resources": []
   }

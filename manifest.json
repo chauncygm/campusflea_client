@@ -400,7 +400,8 @@
 					"content.html",
 					"mine.html",
 					"chat.html",
-					"msg-list.html"
+					"msg-list.html",
+					"personalCenter.html"
 				],
 				"priority": 0
 			},
@@ -1125,7 +1126,10 @@
 				"resources": [
 					"content.html"
 				],
-				"refer": [],
+				"refer": [
+					"category.html",
+					"search.html"
+				],
 				"priority": 0
 			},
 			"msg-list.html": {
@@ -1146,6 +1150,24 @@
 				"resources": [],
 				"refer": [
 					"regist.html"
+				],
+				"priority": 0
+			},
+			"personalCenter.html": {
+				"resources": [
+					"images/icon/收藏.png",
+					"images/icon/赞.png",
+					"images/icon/男.png",
+					"images/icon/发布.png",
+					"images/icon/编辑.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"content.html": {
+				"resources": [],
+				"refer": [
+					"goodsDetails.html"
 				],
 				"priority": 0
 			}

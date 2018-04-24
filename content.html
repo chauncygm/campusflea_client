@@ -4,8 +4,6 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="css/mui.min.css">
 		<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
 		<style type="text/css">
@@ -50,10 +48,19 @@
 				margin-top:8px;
 				margin-left: 2.5%;
 				font-size: 16px;
-				border:0px solid;
-				border-radius:10px;
-				background: #E0E0E0;
-				text-align: center;
+				border-radius:6px;
+				background: #CCFFCC;
+			}
+			#option li img {
+				margin-top: 12px;
+				margin-left: 15%;
+				width: 20px;
+				float: left;
+			}
+			#option li span {
+				display: block;
+				margin-left: 8px;
+				float: left;
 			}
 			.mui-content {
 				background: #CCFFCC;
@@ -229,9 +236,18 @@
 		</div>
 		
 		<div id="option">
-			<li>新鲜事</li>
-			<li>淘校园</li>
-			<li>逛同城</li>
+			<li>
+				<img src="images/icon/new.png"/>
+				<span>新鲜事</span>
+			</li>
+			<li>
+				<img src="images/icon/campus.png"/>
+				<span>淘校园</span>
+			</li>
+			<li>
+				<img src="images/icon/city.png"/>
+				<span>逛同城</span>
+			</li>
 		</div>
 		
 		<div id="type">
@@ -423,6 +439,7 @@
 				var nearbytrigger = doc.getElementById("nearby-trigger");
 				var caller = doc.getElementById("caller");
 				var nearby = doc.getElementById("nearby");
+				var goodsList = doc.getElementsByClassName("goods-list");
 				callerbox.addEventListener("tap", function(){
 					if (!callertrigger.classList.contains("choose")){
 						callertrigger.classList.add("choose");
@@ -446,6 +463,14 @@
 				var slider = mui("#slider");
 				slider.slider({
 					interval: 3000
+				});
+				mui.each(goodsList, function(index,item) {
+					item.addEventListener('tap', function() {
+						$.openWindow({
+							url: 'goodsDetails.html',
+							id: 'goodsDetails',
+						});
+					});
 				});
 			}(mui, document));
 		</script>
