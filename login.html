@@ -142,6 +142,13 @@
 		<script src="js/common.js"></script>
 		<script>
 			(function($, doc) {
+
+				$.init({
+					subpages:[{
+						url:'index-menu.html',
+						id:'index-menu',
+					}]
+				});
 				
 				//使用token自动登录
 				var ajaxTokenLogin = function() {
@@ -165,7 +172,7 @@
 						url : 'index-menu.html',
 						id : 'index-menu',
 						show:{
-							autoShow:false
+							autoShow:true
 						}
 					});
 				}
@@ -174,7 +181,8 @@
 				if (localStorage.getItem("autoLogin") == "true") {
 					var id = localStorage.getItem("id");
 					var token = localStorage.getItem("token");
-
+					console.log(id);
+					console.log(token);
 					document.getElementById("autoLogin").classList['add']('mui-active');
 					
 					if (id != null && token != null) {
@@ -224,7 +232,7 @@
 						dataType : 'json',
 						timeout : 100000,
 						success : function(data){
-							console.log(data.data);
+							console.log(data.code);
 							if (data.code == 400) {
 								console.log("用户名错误");
 								mui.toast("请输入正确的用户名");

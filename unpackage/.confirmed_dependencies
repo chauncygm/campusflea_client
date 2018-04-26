@@ -110,7 +110,8 @@
     "refer": [
       "content.html",
       "category.html",
-      "search.html"
+      "search.html",
+      "publish.html"
     ]
   },
   "examples/tab-webview-main.html": {
@@ -144,23 +145,33 @@
   },
   "personalCenter.html": {
     "resources": [
-      "images/icon/6Ï.png",
+      "images/icon/6ý.png",
       "images/icon/^.png",
       "images/icon/7.png",
-      "images/icon/Ñ.png",
-      "images/icon/‘.png",
+      "images/icon/ý\u0003.png",
+      "images/icon/\u0016ý.png",
       "images/icon/6ý.png",
       "images/icon/^.png",
       "images/icon/7.png",
       "images/icon/ý\u0003.png",
       "images/icon/\u0016ý.png"
     ],
-    "refer": []
+    "refer": [
+      "userInfo.html",
+      "feedback.html",
+      "editUserInfo.html"
+    ]
   },
   "content.html": {
     "refer": [
       "goodsDetails.html"
     ],
     "resources": []
+  },
+  "publish.html": {
+    "resources": [
+      "css/publish.css"
+    ],
+    "refer": []
   }
 }

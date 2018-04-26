@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<style>
+			* {
+				font-family: "黑体";
+				color: #333333;
+			}
+			li {
+				list-style: none;
+			}
+			hr {
+				border: 0px;
+			}
+			form {
+				margin-left: 3%;
+				width: 94%;
+			}
+			input {
+				text-align: right;
+			}
+			.mui-input-row:last-child{
+				height: 60px;
+			}
+			.head {
+				height: 35px;
+			}
+			#head {
+				height: 40px;
+				line-height: 50px;
+			}
+			#head-img{
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 35px;
+				height: 35px;
+			}
+			#phone {
+				color: #666666;
+			}
+			textarea {
+				width: 94%;
+				height: 75px;
+				font-size: 15px;
+				margin-left: 3%;
+			}
+			#nameBox, #realNameBox, #sex, #emailBox, #phone {
+				height: 45px;
+				line-height: 40px;
+			}
+			 .radio_inline{
+                display: inline-block;
+                width: 34%;
+                float: right;
+            }
+            .radio_inline label{
+                width: 10%;
+                padding-left: 30px;
+                padding-right: 20px;
+            }
+            .radio_inline input[type=radio]{
+                right: auto;
+            }
+            .mui-btn {
+            	width: 50px;
+            	height: 30px;
+            	margin-top: 7px;
+            	line-height: 30px;
+            }
+            #submit {
+            	width: 50px;
+            	height: 30px;
+            	margin-top: 7px;
+            	line-height: 30px;
+            	border: solid 1px #AAAAAA;
+            }
+		</style>
+	</head>
+	<body>
+
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>个人中心
+			</button>
+			<h1 class="mui-center mui-title">编辑个人资料</h1>
+			<button id="submit" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">完成</button>
+		</div>
+		
+		<div class="mui-content">
+			<hr />
+			<form class="mui-input-group">
+				<li class="mui-table-view-cell">
+					<div id="head" class="mui-navigate-right">头像
+						<span class=" head mui-pull-right">
+							<img class="head-img mui-action-preview" id="head-img" src="images/logo.png"/>
+						</span>
+					</div>
+				</li>
+				<div id="nameBox" class="mui-input-row">
+					<label>昵称</label>
+					<input id="name" type="text" value="神奇四侠" placeholder="我的昵称">
+				</div>
+				<div id="realNameBox"class="mui-input-row line">
+					<label>真实姓名</label>
+					<input id="realName" type="text" class="mui-input-clear" placeholder="选填">
+				</div>
+				<div id="sex" class="mui-input-row ">
+                    <label>性别</label>
+                    <span class="radio_inline mui-radio">
+                        <input name="radio1" type="radio" id="radio_man" checked value="1">
+                        <label for="radio_man">男</label>
+                        <input name="radio1" type="radio" id="radio_woman" value="0">     
+                        <label for="radio_woman">女</label>        
+                    </span>               
+           		</div>
+				<div id="emailBox" class="mui-input-row">
+					<label>邮箱地址</label>
+					<input id="email" type="text" class="mui-input-clear" placeholder="邮箱号">
+				</div>
+				<div id="phoneBox" class="mui-input-row">
+					<label>手机号</label>
+					<input id="phone" type="text" value="18000529405" class="mui-input-clear" disabled="disabled">
+				</div>
+			</form>
+			<div class="mui-input-row">
+				<label>个人简介：</label>
+			</div>
+
+				<textarea id='personalIntroduce' class="mui-input-clear" placeholder="这个人很懒，什么也没留下...限制25字"></textarea>
+
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.view.js"></script>
+		<script src="js/common.js"></script>
+		<script>
+			mui.init();
+			var id = localStorage.getItem("id");
+//			$.plusReady(function() {
+//				var id = self.id;
+//			});
+			var name = document.getElementById("name");
+			var realName = document.getElementById("realName");
+			var email = document.getElementById("email");
+			var personalIntroduce = document.getElementById("personalIntroduce");
+			var edit = document.getElementById("edit");
+			edit.addEventListener('tap', function() {
+				var url = base + "/";
+				mui.toast(url);
+				mui.ajax(url,{
+					data: {
+						'id': id,
+						'name': name,
+						'realName': realName,
+						'email': email,
+						'personalIntroduce' : personalIntroduce
+					},
+					dataType: 'json',
+					success: function(data) {
+						console.log(data);
+					},
+					error: function() {
+						mui.toast("网络错误");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/publish.css" />
+		<style>
+			* {
+				font-family: "黑体";
+			}
+			hr {
+				border: 0px;
+			}
+			form {
+				width: 96%;
+				margin-left: 2%;
+			}
+			#details {
+				width: 96%;
+				height: 120px;
+				margin-left: 2%;	
+			}
+			#submit {
+            	width: 50px;
+            	height: 30px;
+            	margin-top: 5px;
+            	line-height: 30px;
+            	border: solid 1px #AAAAAA;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>首页
+			</button>
+			<h1 class="mui-center mui-title">发布闲置</h1>
+			<button id="submit" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">发布</button>
+		</div>
+		
+		<div class="mui-content">
+			<hr />
+			<form class="mui-input-group">
+				<div id="title" class="mui-input-row">
+					<label>标题</label>
+					<input id="name" type="text" placeholder="物品">
+				</div>
+				<div id="realNameBox"class="mui-input-row line">
+					<label>介绍</label>
+					<input id="realName" type="text" class="mui-input-clear" placeholder="说明信息">
+				</div>
+				<div id="price" class="mui-input-row">
+					<label>价格</label>
+					<input id="email" type="text" class="mui-input-clear" placeholder="￥0.00">
+				</div>
+				<div id="price" class="mui-input-row">
+					<label>类别</label>
+					<select id="email" class="mui-select">
+						<option>数码产品</option>
+						<option>家电</option>
+					</select>
+				</div>
+			</form>
+			
+			<div class="mui-input-row">
+				<label>实物图片：</label>
+			</div>
+			<div id='image-list' class="row image-list"></div>
+			
+			<div class="mui-input-row">
+				<label>商品详情：</label>
+			</div>
+			<div class="row mui-input-row">
+				<textarea id='details' class="mui-input-clear" placeholder="添加物品详细信息..."></textarea>
+			</div>
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src=" js/publish.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+		</script>
+	</body>
+</html>

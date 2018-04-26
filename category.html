@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+			* {
+				font-family: "黑体";
+			}
+			.mui-row.mui-fullscreen>[class*="mui-col-"] {
+				height: 100%;
+			}
+			.mui-col-xs-3,
+			.mui-col-xs-9 {
+				overflow-y: auto;
+				height: 100%;
+			}
+			.mui-segmented-control .mui-control-item {
+				line-height: 50px;
+				width: 100%;
+			}
+			.mui-control-content {
+				display: block;
+			}
+			.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active {
+				background-color: #fff;
+			}
+			.mui-table-view {
+				padding-top: 10px;	
+			}
+			.catabox {
+				height: 240px;
+			}
+			.title {
+				padding-top: 10px;
+				padding-left: 10px;
+				font-size: 16px;
+				font-weight: bold;
+			}
+			.float {
+				float: left;
+			}
+			.box {
+				height: 100px;
+			}
+			.box img {
+				padding-left: 10%;
+				padding-top: 10px;
+				width: 80%;
+				height: auto;
+			}
+			.box p {
+				padding-top: 0px;
+				color: #000000;
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav mui-action-back"></span>
+			</button>
+			<h1 class="mui-center mui-title">分类</h1>
+		</div>
+		
+		<div class="mui-content mui-row mui-fullscreen">
+		<div class="mui-col-xs-3">
+			<div id="segmentedControls" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-vertical">
+				<div id="content" class="mui-control-content supercata">
+					<a class="mui-control-item mui-active" href="#">数码产品</a>
+					<a class="mui-control-item" href="#">家电</a>
+					<a class="mui-control-item" href="#">运动器具</a>
+					<a class="mui-control-item" href="#">日用品</a>
+					<a class="mui-control-item" href="#">实用工具</a>
+					<a class="mui-control-item" href="#">体育器械</a>
+				</div>
+			</div>
+		</div>
+		<div id="segmentedControlContents" class="mui-col-xs-9" style="border-left: 1px solid #c8c7cc;">
+			<div id="" class="mui-control-content">
+				<ul class="mui-table-view">
+
+					<div class='catabox'>
+						<div class='title'>二级分类</div>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项1</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项2</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项3</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项4</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项5</p>
+						</li>
+					</div>
+					
+					<div class='catabox'>
+						<div class='title'>二级分类</div>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项6</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项7</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项8</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项9</p>
+						</li>
+					</div>
+					
+					<div class='catabox'>
+						<div class='title'>二级分类</div>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项10</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项11</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项12</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项13</p>
+						</li>
+						<li class="mui-col-xs-4 float box">
+							<img src="images/muwu_1.jpg" />
+							<p>选项14</p>
+						</li>
+					</div>
+				</ul>
+			</div>	
+		</div>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src='js/common.js'></script>
+		<script>
+			(function($, doc) {
+				$.init();
+			}(mui, document));
+		</script>
+	</body>
+</html>

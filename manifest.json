@@ -15,7 +15,7 @@
 		"72": "icon.png"
 	},
 	"fullscreen": false,
-	"launch_path": "index-menu.html",/*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
+	"launch_path": "login.html",/*必选，应用的入口页面，默认为根目录下的index.html；也可以是网络地址，网络地址必须以http://或https://开头*/
 	"developer": {
 		"email": "",/*可选，开发者名称*/
 		"name": "",/*可选，开发者邮箱地址*/
@@ -45,7 +45,7 @@
 		"popGesture": "close",/*设置应用默认侧滑返回关闭Webview窗口，none为无侧滑返回功能，hide为侧滑隐藏Webview窗口。参考ask.dcloud.net.cn/article/102*/
 		"splashscreen": {
 			"autoclose": true,/*如果为true，程序启动的图片可以自动关闭，如果为false，开发者需要手动关闭*/
-			"waiting": true,
+			"waiting": false,
 			"delay": "0"
 		},
 		"runmode": "normal",/*两个值，liberate或normal，前者在应用安装时释放资源，后者不需要释放资源*/
@@ -1104,12 +1104,13 @@
 				"priority": 0
 			},
 			"login.html": {
-				"resources": [],
+				"resources": [
+					"index-menu.html"
+				],
 				"refer": [
 					"reg.html",
 					"forget_password.html",
 					"index.html",
-					"index-menu.html",
 					"regist.html",
 					"repswd.html"
 				],
@@ -1128,7 +1129,8 @@
 				],
 				"refer": [
 					"category.html",
-					"search.html"
+					"search.html",
+					"publish.html"
 				],
 				"priority": 0
 			},
@@ -1161,7 +1163,11 @@
 					"images/icon/发布.png",
 					"images/icon/编辑.png"
 				],
-				"refer": [],
+				"refer": [
+					"userInfo.html",
+					"feedback.html",
+					"editUserInfo.html"
+				],
 				"priority": 0
 			},
 			"content.html": {
@@ -1169,6 +1175,13 @@
 				"refer": [
 					"goodsDetails.html"
 				],
+				"priority": 0
+			},
+			"publish.html": {
+				"resources": [
+					"css/publish.css"
+				],
+				"refer": [],
 				"priority": 0
 			}
 		},

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<style type="text/css">
+			* {
+				font-family: "黑体";
+			}
+			li {
+				list-style: none;
+			}
+			p {
+				color: #222222;
+			}
+			.float {
+				float: left;
+			}
+			#header {
+				width: 100%;
+				height: 60px;
+			}
+			#avatar {
+				width: 18%;
+				float: left;
+			}
+			#avatar img{
+				width: 50px;
+				height: 50px;
+				margin-top: 10px;
+				margin-left: 10px;
+				border-radius: 50%;
+			}
+			#name {
+				width: 82%;
+				margin-top: 10px;
+				font-size: 18px;
+				float: left;
+			}
+			#userName {
+				margin-top: 0px;
+				float: left;
+			}
+			#sex {
+				width: 17px;
+				height: auto;
+				margin-top: 2px;
+				margin-left: 4px;
+			}
+			#price {
+				position: absolute;
+				margin-top: 25px;
+				right: 3%;
+				font-size: 17px;
+			}
+			#price span {
+				color: #FF0000;
+				font-size: 22px;
+			}
+			#goodsName {
+				width: 40%;
+				margin-top: 5px;
+				font-size: 15px;
+				float: left;
+			}
+			#goodsName #goodsNameValue {
+				font-style: italic;
+			}
+			#content {
+				margin-top: 10px;
+				margin-left: 3%;
+				margin-right: 3%;
+			}
+			#title {
+				margin-top: 20px;
+				margin-bottom: 20px;
+				font-size: 24px;
+			}
+			#category {
+				font-size: 15px;
+				width: 30%;
+				margin-bottom: 10px;
+				float: left;
+			}
+			#category #goodsCate {
+				font-style: italic;
+			}
+			#time {
+				width: 50%;
+				margin-left: 20%;
+				margin-top: 1px;
+				font-size: 14px;
+				float: left;
+			}
+			#time #goodsTime {
+				font-style: italic;
+			}
+			#content img {
+				width: 100%;
+			}
+			#data {
+				height: 45px;
+			}
+			#data div {
+				width: 25%;
+				height: 45px;
+				line-height: 45px;
+				margin-top: 0px;
+				border-top: solid 1px #555555;
+				border-bottom: solid 1px #555555;
+				float: left;
+			}
+			#buyCar {
+				background: #FF0000;
+
+			}
+			#data div:not(#buyCar) img{
+				margin-left: 20px;
+				float: left;
+			}
+			#love img {
+				margin-top: 14px;
+				width: 16px;
+			}
+			#collection img {
+				margin-top: 12px;
+				width: 20px;
+			}
+			#comment img {
+				margin-top: 13px;
+				width: 20px;
+			}
+			#buyCar img {
+				width: 30px;
+				margin-top: 6px;
+				margin-left: 10px;
+				float: left;
+			}
+			#buyCar span {
+				color: #FFFFFF;
+				width: 30px;
+				margin-left: 5px;
+			}
+			#commtentArea {
+				margin-left: 3%;
+				margin-right: 3%;
+			}
+			.commentList {
+				width: 100%;
+				margin-top: 10px;
+				font-size: 15px;
+				background: #88CCFF;
+			}
+			.commentUserAvatar {
+				width: 14%;
+			}
+			.commentUserAvatar img{
+				width: 25px;
+				margin-top: 5px;
+				margin-left: 13px;
+				border-radius:50% ;
+			}
+			.commentList div:not(#commentTime) {
+				float: left;
+			}
+			.commentName {
+				margin-top: 7px;
+				width: 52%;
+			}
+			.commentUserName, .commentReplyName {
+				font-style: italic;
+				font-size: 14px;
+			}
+			.commentTime {
+				width: 34%;
+				margin-top: 6px;
+				font-size: 13px;
+				float: right;
+			}
+			.commentConent{
+				width: 82%;
+				margin-left: 15%;
+				line-height: 23px;
+			}
+			.commentConent p {
+				border-radius: 6px;
+				background: #FFFFFF;
+				border: 1px solid #DDDDDD;
+			}
+			.hr {
+				width: 100%;
+				height: 6px;
+				border-bottom: 1px solid #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>
+			</button>
+			<h1 class="mui-center mui-title">商品详情</h1>
+		</div>
+		<div class="mui-content">
+			<div id="header">
+				<div id="avatar" >
+					<img src="images/logo.png"/>
+				</div>
+				<div id="name">
+					<span id="userName">你的名字 </span>
+					<img id="sex" src="images/icon/female.png"/>
+				</div>
+				<div id="price">价格:<span>￥<span id="num">998.00</span></span></div>
+				<div id="goodsName">商品名：<span id="goodsNameValue">泰勒吉他</span></div>
+			</div>
+			
+			<hr style="width: 96%;"/>
+			<div id="content">
+				<div id="title">商品标题必须大</div>
+				<div id="category">类别：<span id="goodsCate">乐器</span></div>
+				<div id="time">发布时间:<span id="goodsTime">2018-05-12 16:36</span></div>
+				<img src="images/muwu.jpg"/>
+				<img src="images/cbd.jpg"/>
+				<p id="goodsDesc">这是一段商品描述。。。。这是一段商品描述。。。。这是一段商品描述。。。。这是一段商品描述。。。。这是一段商品描述。。。。这是一段商品描述。。。。</p>
+			</div>
+
+			<div id="data">
+				<div id="love">
+					<img src="images/icon/love.png"/>
+					<span>点赞</span>
+				</div>
+				<div id="collection">
+					<img src="images/icon/collections.png"/>
+					<span>收藏</span>
+				</div>
+				<div id="comment">
+					<img src="images/icon/comment.png"/>
+					<span>评论</span>
+				</div>
+				<div id="buyCar">
+					<img src="images/icon/buy.png"/>
+					<span>购买</span>
+				</div>
+			</div>
+			
+			<div id="commtentArea">
+				
+				<li class="commentList">
+					<div class="commentUserAvatar float">
+						<img src="images/logo.png"/>
+					</div>
+					<div class="commentName float">
+						<div class="commentUserName float">
+							<span>小四</span>
+						</div>
+					</div>
+					<div class="commentTime">
+						<span class="time">2018-06-06 19:47</span>
+					</div>
+					<div class="commentConent">
+						<p>这是一个回复，回复什么？</p>
+					</div>
+					<div class="hr"></div>
+				</li>
+				
+				<li class="commentList">
+					<div class="commentUserAvatar float">
+						<img src="images/logo.png"/>
+					</div>
+					<div class="commentName float">
+						<div class="commentUserName float">
+							<span>小三</span>
+						</div>
+						<div class="float">&nbsp;回复:</div>
+						<div class="commentReplyName float">
+							<span>小四</span>
+						</div>
+					</div>
+					<div class="commentTime">
+						<span class="time">2018-06-06 19:47</span>
+					</div>
+					<div class="commentConent">
+						<p>这是一个回复，回复什么？这是一个回复，回复什么？这是一个回复，回复什么？这是一个回复，回复什么？</p>
+					</div>
+					<div class="hr"></div>
+				</li>
+				
+				<li class="commentList">
+					<div class="commentUserAvatar float">
+						<img src="images/logo.png"/>
+					</div>
+					<div class="commentName float">
+						<div class="commentUserName float">
+							<span>神奇四侠</span>
+						</div>
+						<div class="float">&nbsp;回复:</div>
+						<div class="commentReplyName float">
+							<span>小四</span>
+						</div>
+					</div>
+					<div class="commentTime">
+						<span class="time">2018-06-06 19:47</span>
+					</div>
+					<div class="commentConent">
+						<p>这是一个回复，回复什么？</p>
+					</div>
+					<div class="hr"></div>
+				</li>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src='js/common.js'></script>
+		<script>
+			(function($, doc) {
+				$.init();
+			}(mui, document));
+		</script>
+	</body>
+</html>
