@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8">
-		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
 		<link rel="stylesheet" href="css/mui.min.css">
-		<style>
-		</style>
 	</head>
-
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 id="title" class="mui-title">首页</h1>
-		</header>
 		<nav class="mui-bar mui-bar-tab">
 			<a id="defaultTab" class="mui-tab-item mui-active" href="home.html">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
 			<a class="mui-tab-item" href="msg-list.html">
-				<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+				<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
 				<span class="mui-tab-label">消息</span>
 			</a>
 			<a class="mui-tab-item" href="personalCenter.html">
@@ -34,8 +22,6 @@
 		</nav>
 		<script src="js/mui.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			 //mui初始化
-			mui.init();
 			var subpages = ['home.html', 
 							'msg-list.html',
 							'personalCenter.html'];
@@ -43,7 +29,6 @@
 				top: '0px',
 				bottom: '50px'
 			};
-			
 			var aniShow = {};
 			
 			 //创建子页面，首个选项卡页面显示，其它均隐藏；
@@ -85,7 +70,20 @@
 				//更改当前活跃的选项卡
 				activeTab = targetTab;
 			});
+			
+			var backButtonPress = 0;
+			mui.back = function(event) {
+				backButtonPress++;
+				if (backButtonPress > 1) {
+					plus.runtime.quit();
+				} else {
+					plus.nativeUI.toast('再按一次退出应用');
+				}
+				setTimeout(function() {
+					backButtonPress = 0;
+				}, 1000);
+				return false;
+			};
 		</script>
 	</body>
-
 </html>

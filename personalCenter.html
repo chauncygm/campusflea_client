@@ -35,7 +35,7 @@
 			#userinfo {
 				float: left;
 			}
-			#name {
+			#nameBox {
 				margin-top: 30px;
 				margin-left: 25px;
 				float: left;
@@ -71,7 +71,7 @@
 				margin-left: 25px;
 				font-size: 12px;
 			}
-			#introduce-value {
+			#introduceBox {
 				width: 160px;
 				word-wrap: break-word;
 				display:block;
@@ -124,7 +124,6 @@
 				text-align: center;
 				color: #F8F8F8;
 			}
-			
 			.mui-views,
 			.mui-view,
 			.mui-pages,
@@ -181,7 +180,7 @@
 					<img id="avatar" src="images/logo.png" />
 					<div id="userinfo">
 						<div class="float">
-							<span id="name">神奇四侠&nbsp;</span>
+							<span id="nameBox">神奇四侠</span>&nbsp;
 							<img id="sex" src="images/icon/male.png"/>
 						</div>
 						<div id="edit">
@@ -190,20 +189,20 @@
 						</div>
 						<div id="location">
 							<span>来自&nbsp;</span>
-							<span id="location-value">四川·成都·四川师范大学</span>
+							<span id="locationBox">四川·成都·四川师范大学</span>
 						</div>
 						<div id="introduce">
 							<span class="float">个人简介：</span>
-							<span id="introduce-value">这个人很懒，什么也没留下...限制25字</span>
+							<span id="introduceBox">这个人很懒，什么也没留下...限制25字</span>
 						</div>
 					</div>
 					
 					<div id="hr"></div>
 					
 					<div id="baseData">
-						<li class="dataItem float"><img src="images/icon/publish.png"/><span>发布&nbsp;</span><span>8</span></li>
-						<li class="dataItem float"><img src="images/icon/fabulous.png"/><span>获赞&nbsp;</span><span>8</span></li>
-						<li class="dataItem float"><img src="images/icon/collection.png"/><span>收藏&nbsp;</span><span>8</span></li>
+						<li class="dataItem float"><img src="images/icon/publish.png"/><span>发布&nbsp;</span><span id="publishs">2</span></li>
+						<li class="dataItem float"><img src="images/icon/fabulous.png"/><span>获赞&nbsp;</span><span id="likes">4</span></li>
+						<li class="dataItem float"><img src="images/icon/collection.png"/><span>收藏&nbsp;</span><span id="collections">2</span></li>
 					</div>
 				</div>
 				<hr />
@@ -254,7 +253,7 @@
 								修改密码
 							</li>
 						</ul>
-						<ul class="mui-table-view">
+						<ul id="clearCache" class="mui-table-view">
 							<li class="mui-table-view-cell">
 								清除本地缓存
 							</li>
@@ -300,7 +299,7 @@
 								</div>
 							</li>
 						</ul>
-						<ul class="mui-table-view">
+						<ul id="checkUpdate" class="mui-table-view">
 							<li class="mui-table-view-cell">
 								检查更新
 							</li>
@@ -315,17 +314,56 @@
 				</div>
 			</div>
 		</div>
-		
-		<script src="js/mui.min.js "></script>
-		<script src="js/mui.view.js "></script>
-		<script src='js/feedback.js'></script>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.view.js"></script>
+		<script src="js/common.js"></script>
 		<script>
 			mui.init();
 			var viewApi = mui('#app').view({
 				defaultPage: '#mainPage'
 			});
 			var view = viewApi.view;
-			(function($) {
+			
+			(function($, doc) {
+				var id = localStorage.getItem("id");
+				var token = localStorage.getItem("token");
+				var name = doc.getElementById("name");
+				var nameBox = doc.getElementById("nameBox");
+				var sex = doc.getElementById("sex");
+				var locationBox = doc.getElementById("locationBox");
+				var introduceBox = doc.getElementById("introduceBox")
+				var publishs = doc.getElementById("publishs");
+				var likes = doc.getElementById("likes");
+				var collections = doc.getElementById("collections");
+				$.ajax({
+					url: baseUrl + "/user/getUserInfo",
+					type: "post",
+					async: true,
+					headers : {
+						"authorization" : token
+					},
+					data: {
+						'id' : id
+					},
+					success: function(data) {
+						nameBox.innerHTML = data.data.username;
+						if (data.data.sex == 1) {
+							sex.src = "images/icon/male.png";
+						} else {
+							sex.src = "images/icon/female.png";
+						}
+						locationBox.innerHTML = data.data.location;
+						introduceBox.innerHTML = data.data.introduce;
+						publishs.innerHTML = data.data.publishs;
+						likes.innerHTML = data.data.likes;
+						collections.innerHTML = data.data.collections;
+					},
+					error: function(data) {
+						$.toast("未知错误");
+					}
+				});
+				
 				//处理view的后退与webview后退
 				var oldBack = $.back;
 				$.back = function() {
@@ -349,14 +387,10 @@
 	//			view.addEventListener('pageBack', function(e) {
 	//				console.log(e.detail.page.id + ' back');
 	//			});
-				var feedbackBox = document.getElementById("feedback");
-				feedbackBox.addEventListener('tap', function() {
-					$.openWindow({
-						url: "feedback.html",
-						id: "feedback"
-					});
-				});
-				var edit = document.getElementById("edit");
+	
+	
+				//编辑资料监听事件
+				var edit = doc.getElementById("edit");
 				var id = localStorage.getItem("id");
 				edit.addEventListener('tap', function() {
 					$.openWindow({
@@ -365,7 +399,33 @@
 						createNew:true
 					});
 				});
-				var quit = document.getElementById("quit");
+				
+				//问题反馈选项监听事件
+				var feedbackBox = doc.getElementById("feedback");
+				feedbackBox.addEventListener('tap', function() {
+					$.openWindow({
+						url: "feedback.html",
+						id: "feedback"
+					});
+				});
+				
+				var checkUpdate = doc.getElementById("checkUpdate");
+				checkUpdate.addEventListener("tap", function() {
+					$.toast("已经是最新版本");
+				});
+				
+				var clearCache = doc.getElementById("clearCache");
+				clearCache.addEventListener('tap', function() {
+					var id = localStorage.getItem('id');
+					var token = localStorage.getItem('token');
+					localStorage.clear();
+					localStorage.setItem('id', id);
+					localStorage.setItem('token', token);
+					$.toast("清理完成");
+				});
+				
+				//退出按钮监听事件
+				var quit = doc.getElementById("quit");
 				quit.addEventListener('tap', function() {
 					plus.nativeUI.actionSheet({
 		                cancel: "取消",
@@ -388,7 +448,7 @@
 		                }
 		            });
 				});
-			})(mui);
+			})(mui, document);
 		</script>
 	</body>
 </html>

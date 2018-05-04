@@ -139,7 +139,7 @@
 						"notification": "unpackage/res/icons/20x20.png",
 						"notification@2x": "unpackage/res/icons/40x40.png"
 					},
-					"appstore": "C:/Users/Chaun/Desktop/flea (已调整大小).png"
+					"appstore": "unpackage/res/icons/1024x1024.png"
 				},
 				"android": {
 					"mdpi": "unpackage/res/icons/48x48.png", /*必选，48x48，普通屏程序图标*/
@@ -1112,7 +1112,8 @@
 					"forget_password.html",
 					"index.html",
 					"regist.html",
-					"repswd.html"
+					"repswd.html",
+					"addUserInfo.html"
 				],
 				"priority": 0
 			},
@@ -1151,7 +1152,9 @@
 			"regist.html": {
 				"resources": [],
 				"refer": [
-					"regist.html"
+					"regist.html",
+					"editUserInfo.html",
+					"addUserInfo.html"
 				],
 				"priority": 0
 			},
@@ -1182,6 +1185,41 @@
 					"css/publish.css"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"search.html": {
+				"resources": [],
+				"refer": [
+					"goodsListNav.html"
+				],
+				"priority": 0
+			},
+			"goodsListNav.html": {
+				"resources": [
+					"goodsList.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"repswd.html": {
+				"resources": [],
+				"refer": [
+					"repswd.html"
+				],
+				"priority": 0
+			},
+			"addUserInfo.html": {
+				"resources": [],
+				"refer": [
+					"index-menu.html"
+				],
+				"priority": 0
+			},
+			"editUserInfo.html": {
+				"resources": [],
+				"refer": [
+					"index-menu.html"
+				],
 				"priority": 0
 			}
 		},

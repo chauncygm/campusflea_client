@@ -298,12 +298,6 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left">
-				<span class="mui-icon mui-icon-left-nav"></span>
-			</button>
-			<h1 class="mui-center mui-title">消息</h1>
-		</header>
 		<pre id='h'></pre>
 		<script id='msg-template' type="text/template">
 			<% for(var i in record){ var item=record[i]; %>
@@ -354,6 +348,7 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.imageViewer.js"></script>
 		<script src="js/arttmpl.js"></script>
+		<script src="js/common.js"></script>
 		<script>
 			(function($, doc) {
 				var MIN_SOUND_TIME = 800;
@@ -385,11 +380,10 @@
 				}
 
 				$.plusReady(function() {
-					var baseurl = "http://192.168.0.101:8080/campus";
 					var self = plus.webview.currentWebview();
 					var mid = self.mid;
 					var oid = self.oid;
-					var wsurl = "ws://192.168.0.101:8080/campus/chat/" + mid + "/" + oid;
+					var wsurl = wsBaseUrl + "/" + mid + "/" + oid;
 					console.log(wsurl);
 					var ws = new WebSocket(wsurl);
 			
@@ -422,7 +416,7 @@
 						ws.close();
 					}
 					function createUpload(path) {
-						var task = plus.uploader.createUpload( "http://192.168.0.101:8080/campus/chat/uploadImg", 
+						var task = plus.uploader.createUpload(baseUrl + "/uploadImg", 
 							{ method:"POST",blocksize:204800,priority:100 },
 							function ( t, status ) {
 								// 上传完成

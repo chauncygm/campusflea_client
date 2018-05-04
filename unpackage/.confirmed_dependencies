@@ -93,7 +93,8 @@
       "index.html",
       "index-menu.html",
       "regist.html",
-      "repswd.html"
+      "repswd.html",
+      "addUserInfo.html"
     ],
     "resources": []
   },
@@ -139,7 +140,9 @@
   },
   "regist.html": {
     "refer": [
-      "regist.html"
+      "regist.html",
+      "editUserInfo.html",
+      "addUserInfo.html"
     ],
     "resources": []
   },
@@ -173,5 +176,34 @@
       "css/publish.css"
     ],
     "refer": []
+  },
+  "search.html": {
+    "refer": [
+      "goodsListNav.html"
+    ],
+    "resources": []
+  },
+  "goodsListNav.html": {
+    "resources": [
+      "goodsList.html"
+    ],
+    "refer": [
+      "goodsList.html"
+    ]
+  },
+  "repswd.html": {
+    "refer": [
+      "repswd.html"
+    ]
+  },
+  "addUserInfo.html": {
+    "refer": [
+      "index-menu.html"
+    ]
+  },
+  "editUserInfo.html": {
+    "refer": [
+      "index-menu.html"
+    ]
   }
 }

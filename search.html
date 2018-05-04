@@ -41,7 +41,7 @@
 				<input id="searchbox" type="text" placeholder="搜索" />
 			</div>
 			<div id="search_option">
-				<li class="option">蓝牙耳机</li>
+				<li id="li" class="option">蓝牙耳机</li>
 				<li class="option">吉他音箱</li>
 				<li class="option">网球拍</li>
 				<li class="option center"><span class="mui-icon mui-icon-trash"></span>清空历史记录</li>
@@ -52,6 +52,20 @@
 		<script src="js/mui.view.js "></script>
 		<script>
 			mui.init();
+			var search = document.getElementById("searchbox");
+			search.addEventListener('blur', function() {
+				mui.openWindow({
+					id:'goodsListNav',
+					url:'goodsListNav.html'
+				});
+			});
+			var li = document.getElementById("li");
+			li.addEventListener('tap', function() {
+				mui.openWindow({
+					id:'goodsListNav',
+					url:'goodsListNav.html'
+				});
+			});
 		</script>
 	</body>
 </html>
